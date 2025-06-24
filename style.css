@@ -1,0 +1,455 @@
+/* === Base Styles === */
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  line-height: 1.6;
+  background-color: blue;
+  background-image: url("backround.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* === Dark Mode Styles === */
+body.dark-mode {
+  background-color: #121212;
+  color: #f1f1f1;
+  background-image: url("dark.png");
+}
+
+.dark-mode p,
+.dark-mode h2,
+.dark-mode .nama {
+  color: #f1f1f1;
+}
+
+/* === Heading === */
+.nama {
+  font-size: clamp(24px, 5vw, 40px);
+  font-weight: bold;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* === Container Layout === */
+.perkenalan-container,
+.pendidikan,
+.pendukung-container,
+.pertim {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+/* === Images === */
+.foto-bulat,
+.tim,
+.lab,
+.coding {
+  width: clamp(150px, 30%, 220px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* === Order untuk Tata Letak === */
+.perkenalan-container .foto-bulat,
+.pendukung-container .coding {
+  order: 2;
+}
+.perkenalan-container .text,
+.pendukung-container .keahlian {
+  order: 1;
+}
+
+.pendidikan .lab,
+.pertim .tim {
+  order: 1;
+}
+.pendidikan .text-pendidikan,
+.pertim .pengalaman {
+  order: 2;
+}
+
+/* === Text Elements === */
+.text,
+.text-pendidikan,
+.keahlian,
+.pengalaman,
+p {
+  flex: 1;
+  font-size: clamp(14px, 2vw, 20px);
+  text-transform: capitalize;
+  text-align: justify;
+  animation: fadeInUp 1s ease forwards;
+  transition: color 0.3s;
+}
+
+/* === Responsive Design === */
+@media (max-width: 600px) {
+  .perkenalan-container,
+  .pendidikan,
+  .pendukung-container,
+  .pertim {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .perkenalan-container .foto-bulat,
+  .pendidikan .lab,
+  .pendukung-container .coding,
+  .pertim .tim {
+    order: 2;
+  }
+
+  .perkenalan-container .text,
+  .pendidikan .text-pendidikan,
+  .pendukung-container .keahlian,
+  .pertim .pengalaman {
+    order: 1;
+  }
+}
+
+/* === Fade In Animation === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Smooth Transitions === */
+body,
+img,
+p,
+h2 {
+  transition: all 0.4s ease;
+}
+
+/* === Optional: Scroll Animation Class === */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Judul === */
+.judul {
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* === Full Bleed Section Header === */
+.full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* === Section Titles === */
+.section-header,
+.section-header1 {
+  /* color: white; */
+  margin-bottom: 1px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.section-header {
+  text-align: left;
+}
+
+.section-header1 {
+  text-align: right;
+}
+
+/* === LIGHT MODE === */
+body:not(.dark-mode) .education-bg {
+  background: linear-gradient(to bottom, #ffffff, #9ba2a6);
+  color: black;
+}
+
+body:not(.dark-mode) .expertise-bg {
+  background: linear-gradient(to bottom, #ffffff, #9ba2a6);
+  color: black;
+}
+
+body:not(.dark-mode) .experience-bg {
+  background: linear-gradient(to bottom, #ffffff, #9ba2a6);
+  color: black;
+}
+
+/* === DARK MODE === */
+body.dark-mode .education-bg {
+  background: linear-gradient(to bottom, #1e3c72, #2a5298);
+}
+
+body.dark-mode .expertise-bg {
+  background: linear-gradient(to bottom, #8e44ad, #c0392b);
+}
+
+body.dark-mode .experience-bg {
+  background: linear-gradient(to bottom, #134e5e, #71b280);
+}
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: #fff;
+  color: #111;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #111;
+  color: #fff;
+}
+.landing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 10%;
+  min-height: 100vh;
+  background: linear-gradient(to right, #f9f9f9, #e5e5e5);
+  transition: background-color 0.5s ease;
+}
+
+.landing-text {
+  flex: 1;
+  animation: fadeInLeft 1.2s ease-in-out forwards;
+}
+
+.landing-text h1 {
+  font-size: 3rem;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.landing-text .highlight {
+  color: #8c0b9f;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 25px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.cta-btn {
+  background-color: #8c0b9f;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color: #5f0a6c;
+  transform: translateY(-2px);
+}
+
+.landing-image {
+  flex: 1;
+  text-align: center;
+  animation: fadeInRight 1.2s ease-in-out forwards;
+}
+
+.landing-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Dark mode support */
+body.dark-mode .landing {
+  background: linear-gradient(to right, #2c0030, #47004e);
+}
+
+body.dark-mode .subtitle {
+  color: #ddd;
+}
+@media screen and (max-width: 768px) {
+  .landing {
+    flex-direction: column;
+    padding: 60px 5%;
+    text-align: center;
+  }
+
+  .landing-text {
+    animation: fadeInUp 1.2s ease-in-out forwards;
+  }
+
+  .landing-image {
+    margin-top: 30px;
+    animation: fadeInUp 1.2s ease-in-out forwards;
+  }
+
+  .landing-image img {
+    max-width: 300px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Tambahkan animasi fadeInUp */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* form */
+.contact-form {
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 2rem;
+  background-color: var(--container-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Nunito', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-form h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem; /* Tambah padding kiri */
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: white;
+  color: #111;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea {
+  background-color: #1e1e1e;
+  color: white;
+  border: 1px solid #444;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #8c0b9f;
+  box-shadow: 0 0 6px rgba(140, 11, 159, 0.5);
+}
+
+.contact-form button {
+  display: inline-block;
+  background: linear-gradient(145deg, #5f0a6c, #8c0b9f);
+  color: white;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  font-family: 'Nunito', sans-serif;
+}
+
+.contact-form button:hover {
+  background: linear-gradient(145deg, #8c0b9f, #5f0a6c);
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .contact-form {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .contact-form button {
+    width: 100%;
+  }
+}
+.contact-form label {
+  display: block;
+  margin: 0 0 0.5rem 0.2rem; /* Tambahkan sedikit margin kiri */
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+form input:focus, form textarea:focus {
+  border: 2px solid #5f0a6c;
+  box-shadow: 0 0 8px rgba(95, 10, 108, 0.4);
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
